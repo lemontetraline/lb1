@@ -1,13 +1,4 @@
-// ЛБ1. Лінійні та розгалужені алгоритми
-// Варіант 4. Умовний індекс навчального рейтингу
-//
-// Вхід:  score (int, 0-100 балів), attendance (int, 0-100 відсоткових пунктів)
-// Показник: m = 2 * score + attendance (0-300)
-// Класифікація (порядок важливий):
-//   1) score < 70 || attendance < 80 -> "не відповідає навчальній моделі"
-//   2) m < 250                       -> "відповідає, базовий рівень"
-//   3) m < 280                       -> "відповідає, підвищений рівень"
-//   4) інакше                        -> "відповідає, високий рівень"
+// Варіант 4
 
 #include <iostream>
 
@@ -15,36 +6,37 @@ int main() {
     int score = 0;
     int attendance = 0;
 
-    // Рівень 1: успішність читання
-    std::cout << "Введіть бал (0-100) і відвідуваність (0-100) через пробіл: ";
+    // успішність читання
+    std::cout << "enter score(0-100) and attendance (0-100): ";
     if (!(std::cin >> score >> attendance)) {
-        std::cerr << "Помилка: введіть два цілі числа через пробіл: бал і відвідуваність.\n";
+        std::cerr << "error: use space to separate two numbers \n";
         return 1;
     }
 
-    // Рівень 2: коректність значень (поля між собою не залежать)
+    // коректність значень
     if (score < 0 || score > 100) {
-        std::cerr << "Помилка: бал має бути в межах від 0 до 100.\n";
+        std::cerr << "error: must be in range 0-100 \n";
         return 1;
     }
     if (attendance < 0 || attendance > 100) {
-        std::cerr << "Помилка: відвідуваність має бути в межах від 0 до 100 відсоткових пунктів.\n";
+        std::cerr << "error: must be in range 0-100 \n";
         return 1;
     }
 
-    // Обчислення (діапазон m: 0-300, тому int достатньо)
+    // обчислення
     const int m = 2 * score + attendance;
 
-    // Класифікація: спочатку поля, і лише потім рівень індексу
-    std::cout << "Індекс m = " << m << "\n";
+    // класифікаці
+    std::cout << "index m = " << m << "\n";
+    std::cout << "category: ";
     if (score < 70 || attendance < 80) {
-        std::cout << "Категорія: не відповідає навчальній моделі\n";
+        std::cout << "none, scores too low\n";
     } else if (m < 250) {
-        std::cout << "Категорія: відповідає, базовий рівень\n";
+        std::cout << "basic education \n";
     } else if (m < 280) {
-        std::cout << "Категорія: відповідає, підвищений рівень\n";
+        std::cout << "mid education\n";
     } else {
-        std::cout << "Категорія: відповідає, високий рівень\n";
+        std::cout << "high education\n";
     }
 
     return 0;
