@@ -1,0 +1,27 @@
+Команди Git для ЛБ1 (виконайте у корені проєкту, де лежать main.cpp, README.md і .gitignore)
+
+# одноразове налаштування, якщо ще не робили
+git config --global user.name "Ваше Ім'я"
+git config --global user.email "ваша@пошта"
+
+git init
+git status
+
+# коміт 1: код, перевірки, .gitignore
+git add main.cpp .gitignore
+git commit -m "Додано перевірку входів і обчислення індексу рейтингу"
+git status
+
+# коміт 2: опис і тести
+git add README.md
+git commit -m "Додано опис, правила та таблицю тестів"
+git status
+
+# хеш остаточного коміту для звіту
+git log --oneline
+git rev-parse HEAD
+
+# за потреби — віддалений репозиторій (GitHub тощо) для посилання у звіті
+git remote add origin <URL вашого репозиторію>
+git branch -M main
+git push -u origin main
